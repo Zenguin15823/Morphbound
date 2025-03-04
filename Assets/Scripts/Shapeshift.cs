@@ -3,6 +3,7 @@ using UnityEngine;
 public class Shapeshift : MonoBehaviour
 {
     private int currentForm;
+    private float timeSince;
 
     public GameObject cat;
     public GameObject rhino;
@@ -12,6 +13,7 @@ public class Shapeshift : MonoBehaviour
     private void Start()
     {
         currentForm = defaultForm;
+        timeSince = cooldown;
 
         if (defaultForm == 0)
         {
@@ -27,13 +29,15 @@ public class Shapeshift : MonoBehaviour
 
     void Update()
     {
+        timeSince += Time.deltaTime;
+
         GameObject[] forms = { cat, rhino }; 
         for (int i = 0; i < forms.Length; i++)
         {
             if (i != currentForm) forms[i].transform.position = forms[currentForm].transform.position;
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) changeForm();
+        if (Input.GetKeyDown(KeyCode.E) && timeSince >= cooldown) changeForm();
     }
 
     void changeForm()
@@ -46,6 +50,7 @@ public class Shapeshift : MonoBehaviour
             forms[currentForm].SetActive(false);
             forms[nextForm].SetActive(true);
             currentForm = nextForm;
+            timeSince = 0;
         }
         else
         {
