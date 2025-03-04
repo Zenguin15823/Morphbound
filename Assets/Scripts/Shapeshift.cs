@@ -57,4 +57,11 @@ public class Shapeshift : MonoBehaviour
             print("Not enough room to shapeshift!");
         }
     }
+
+    public GameObject getCurrentForm()
+    {
+        if (currentForm == 0) return cat;
+        if (currentForm == 1) return rhino;
+        else return null;
+    }
 }
