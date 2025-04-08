@@ -4,6 +4,7 @@ public class Shapeshift : MonoBehaviour
 {
     private int currentForm;
     private float timeSince;
+    private SceneSwitcher sw;
 
     public GameObject cat;
     public GameObject rhino;
@@ -25,17 +26,15 @@ public class Shapeshift : MonoBehaviour
             rhino.SetActive(true);
             cat.SetActive(false);
         }
+
+        sw = GetComponent<SceneSwitcher>();
     }
 
     void Update()
     {
-        timeSince += Time.deltaTime;
+        if (sw.isPaused) return;
 
-        GameObject[] forms = { cat, rhino }; 
-        for (int i = 0; i < forms.Length; i++)
-        {
-            if (i != currentForm) forms[i].transform.position = forms[currentForm].transform.position;
-        }
+        timeSince += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.E) && timeSince >= cooldown) changeForm();
     }
@@ -43,6 +42,16 @@ public class Shapeshift : MonoBehaviour
     void changeForm()
     {
         GameObject[] forms = { cat, rhino };
+
+        // check if dead - don't transform if so
+        if (forms[currentForm].GetComponent<Death>().dead) return;
+
+        // bring other forms to current position
+        for (int i = 0; i < forms.Length; i++)
+        {
+            if (i != currentForm) forms[i].transform.position = forms[currentForm].transform.position;
+        }
+
         int nextForm = (currentForm + 1) % forms.Length;
         Collider2D hit = Physics2D.OverlapBox(forms[nextForm].transform.position, forms[nextForm].transform.localScale, 0f, 3);
         if (hit != null)
