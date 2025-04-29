@@ -38,11 +38,35 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2455259843
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background_1
+    uniqueID: 2455259843
+    locked: 0
+  - name: Background_2
+    uniqueID: 2826375823
+    locked: 0
+  - name: Background_3
+    uniqueID: 1885995755
+    locked: 0
+  - name: Forest_Faraway
+    uniqueID: 847589473
+    locked: 0
+  - name: Forest_Nearby
+    uniqueID: 1830233153
+    locked: 0
+  - name: Player
+    uniqueID: 2930698919
+    locked: 0
+  - name: Platform
+    uniqueID: 681103727
+    locked: 0
+  - name: Bushes
+    uniqueID: 3153789109
+    locked: 0
+  - name: Spikes
+    uniqueID: 2407920509
     locked: 0
   m_RenderingLayers:
   - Default
