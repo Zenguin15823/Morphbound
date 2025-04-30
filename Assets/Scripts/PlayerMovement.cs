@@ -1,8 +1,10 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpecialMovement sm;
 
     public float speed;
     public float jumpHeight;
@@ -13,14 +15,32 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sm = GetComponent<SpecialMovement>();
     }
 
     private void Update()
     {
-        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.linearVelocityY);
+        float inputHoriz = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
+        if (sm.isDashing())
+        {
+            rb.linearVelocity = new Vector2(sm.dashDir * speed * 2, rb.linearVelocityY);
+        }
+        else 
+            rb.linearVelocity = new Vector2(inputHoriz * speed, rb.linearVelocityY);
+
+        bool grounded = isGrounded();
+        if (sm.doubleJump && grounded)
+            sm.hasJump = true;
+
+        if (Input.GetKeyDown(KeyCode.Space) && (grounded || sm.hasJump))
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpHeight);
+            sm.hasJump = sm.doubleJump && grounded;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && sm.dashReady && inputHoriz != 0)
+            sm.useDash(inputHoriz);
     }
 
     private bool isGrounded()
