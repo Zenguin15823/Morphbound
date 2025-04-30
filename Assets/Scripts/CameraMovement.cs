@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    private Shapeshift shape;
+
     public GameObject player;
     public float up, down, left, right;
     public float width, height;
     public bool drawHelperGizmos;
 
+    private void Start()
+    {
+        shape = player.GetComponent<Shapeshift>();
+    }
+
     void Update()
     {
-        Vector3 pos = player.transform.position;
+        Vector3 pos = shape.getCurrentForm().transform.position;
         Vector3 newpos = new Vector3(0, 0, transform.position.z);
 
         // the camera will track the player while staying within the set borders

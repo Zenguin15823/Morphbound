@@ -12,7 +12,7 @@ public class Death : MonoBehaviour
 
     void Start()
     {
-        spawnPoint = transform.position;
+        spawnPoint = transform.parent.position;
         sr = GetComponent<SpriteRenderer>();
         pm = GetComponent<PlayerMovement>();
         deathScreenTimer = 0;

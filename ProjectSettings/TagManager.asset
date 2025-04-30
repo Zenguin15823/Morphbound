@@ -56,6 +56,9 @@ TagManager:
   - name: Forest_Nearby
     uniqueID: 1830233153
     locked: 0
+  - name: Enemies
+    uniqueID: 1375155291
+    locked: 0
   - name: Player
     uniqueID: 2930698919
     locked: 0
