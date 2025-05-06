@@ -4,6 +4,6 @@ public class EggBehavior : MonoBehaviour
 {
     void Start()
     {
-        Destroy(gameObject, 1.3f);
+        Destroy(gameObject, 2f);
     }
 }

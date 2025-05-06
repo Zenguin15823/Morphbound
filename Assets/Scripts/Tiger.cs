@@ -29,7 +29,7 @@ public class Tiger : MonoBehaviour
         else sr.flipX = false;
 
         // don't let him fall off that platform!!!
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13.8f, 14.2f), transform.position.y, transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13.8f, 14.2f), Mathf.Max(2.99f, transform.position.y), transform.position.z);
 
         if (!(lunging || charging))
         {

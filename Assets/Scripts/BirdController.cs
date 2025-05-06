@@ -41,11 +41,13 @@ public class BirdController : MonoBehaviour
         {
             direction = -1f;
             transform.position = new Vector3(startPosition.x + moveDistance, transform.position.y, transform.position.z);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else if (direction < 0 && transform.position.x <= startPosition.x - moveDistance)
         {
             direction = 1f;
             transform.position = new Vector3(startPosition.x - moveDistance, transform.position.y, transform.position.z);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }
 

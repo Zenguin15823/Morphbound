@@ -798,7 +798,7 @@ BoxCollider2D:
   m_Offset: {x: -0.09, y: 0.89}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51724535, y: 0.016822126}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.47, y: 2.34}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -819,20 +819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe0e8defb0826648a209be397c54850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  jumpBufferFrames: 60
-  coyoteTime: 0.1
-  maxMaxAirJumps: 1
-  jumpForce: 30
-  groundCheckPoint: {fileID: 1493647177}
-  groundCheckY: 0.2
-  groundCheckX: 0.5
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  dashSpeed: 70
-  dashTime: 0.2
-  dashCooldown: 0.35
   SideAttackTransform: {fileID: 1704607464}
   UpAttackTransform: {fileID: 838085299}
   DownAttackTransform: {fileID: 1480528206}
