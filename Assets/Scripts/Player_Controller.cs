@@ -188,7 +188,7 @@ public class Player_Controller : MonoBehaviour
             else if(yAxis > 0)
             {
                 Hit(UpAttackTransform, UpAttackArea);
-                SlashEffectAtAngle(slashEffect, 90, UpAttackTransform);
+                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
             }
 
             else if(yAxis < 0 && !Grounded())
