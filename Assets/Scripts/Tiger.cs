@@ -53,7 +53,11 @@ public class Tiger : MonoBehaviour
             rb.linearVelocity = new Vector2(chargeSpeed * chargeDir, 0);
 
             actionTimer -= Time.deltaTime;
-            if (actionTimer < 0) charging = false;
+            if (actionTimer < 0)
+            {
+                charging = false;
+                anim.Play("Tiger_Walk");
+            }
 
             // face the right direction
             if (rb.linearVelocityX > 0) sr.flipX = true;
@@ -94,5 +98,7 @@ public class Tiger : MonoBehaviour
         chargeDir = Mathf.Sign(FindPlayer().transform.position.x - transform.position.x);
         charging = true;
         actionTimer = Random.Range(1f, 4f);
+
+        anim.Play("Tiger_Charge");
     }
 }

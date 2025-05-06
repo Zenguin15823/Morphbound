@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpecialMovement sm;
+    Animator anim;
 
     public float speed;
     public float jumpHeight;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sm = GetComponent<SpecialMovement>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,6 +43,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && sm.dashReady && inputHoriz != 0)
             sm.useDash(inputHoriz);
+
+
+        // animation
+        float locX = Mathf.Abs(transform.localScale.x);
+
+        if (rb.linearVelocity.x < 0)
+        {
+            transform.localScale = new Vector3(-locX, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(locX, transform.localScale.y, transform.localScale.z);
+        }
+
+        if (rb.linearVelocity.x != 0 && grounded && !sm.isDashing())
+            anim.SetBool("Walking", true);
+        else
+            anim.SetBool("Walking", false);
+
+        anim.SetBool("Dashing", sm.isDashing());
+
+        anim.SetBool("Jumping", !grounded);
+
     }
 
     private bool isGrounded()

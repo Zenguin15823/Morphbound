@@ -52,7 +52,7 @@ public class Death : MonoBehaviour
     {
         if (other.CompareTag("Boundary") || other.gameObject.layer == 6) // Trigger-based spikes, etc.
         {
-            SceneManager.LoadScene(0);
+            KillPlayer("Went out of bounds!");
         }
     }
 
