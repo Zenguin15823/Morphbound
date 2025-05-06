@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class Death : MonoBehaviour
         dead = false;
     }
 
-    private void Update()
+    void Update()
     {
         if (dead)
         {
@@ -38,14 +38,30 @@ public class Death : MonoBehaviour
         }
     }
 
+    // Handle actual collisions (e.g. enemies, spikes)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6) // Lethal object
         {
-            sr.enabled = false;
-            pm.enabled = false;
-            deathScreenTimer = 1;
-            dead = true;
+            KillPlayer("Hit lethal object");
         }
+    }
+
+    // Handle trigger deaths (e.g. out-of-bounds or special zones)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Boundary") || other.gameObject.layer == 6) // Trigger-based spikes, etc.
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void KillPlayer(string reason = "Unknown")
+    {
+        Debug.Log("Player died: " + reason);
+        sr.enabled = false;
+        pm.enabled = false;
+        deathScreenTimer = 1f;
+        dead = true;
     }
 }

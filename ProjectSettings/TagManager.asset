@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -56,8 +57,14 @@ TagManager:
   - name: Forest_Nearby
     uniqueID: 1830233153
     locked: 0
+  - name: Foreground
+    uniqueID: 1386079435
+    locked: 0
   - name: Player
     uniqueID: 2930698919
+    locked: 0
+  - name: PlatformWalls
+    uniqueID: 799894273
     locked: 0
   - name: Platform
     uniqueID: 681103727
