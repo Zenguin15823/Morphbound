@@ -12432,7 +12432,7 @@ GameObject:
   - component: {fileID: 2014118330}
   - component: {fileID: 2014118334}
   - component: {fileID: 2014118336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

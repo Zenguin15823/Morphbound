@@ -3022,6 +3022,7 @@ GameObject:
   - component: {fileID: 131149672}
   - component: {fileID: 131149671}
   - component: {fileID: 131149670}
+  - component: {fileID: 131149675}
   m_Layer: 3
   m_Name: Rhino
   m_TagString: Untagged
@@ -3204,6 +3205,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &131149675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131149668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0f8447ce229074b80e300c53fd2c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleJump: 0
+  dash: 1
 --- !u!1 &346195429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,7 +3232,7 @@ GameObject:
   - component: {fileID: 346195432}
   - component: {fileID: 346195431}
   - component: {fileID: 346195430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3457,7 +3472,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1141178187
-  m_SortingLayer: 10
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -22391,7 +22406,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1887046787
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -25685,7 +25700,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 681103727
-  m_SortingLayer: 9
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -39668,7 +39683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fab5a668e986484083febf4f50c3237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1805029951}
+  player: {fileID: 1581188990}
   up: 18
   down: -4
   left: -72
@@ -40626,6 +40641,7 @@ GameObject:
   - component: {fileID: 1805029952}
   - component: {fileID: 1805029958}
   - component: {fileID: 1805029959}
+  - component: {fileID: 1805029960}
   m_Layer: 3
   m_Name: Cat
   m_TagString: Player
@@ -40818,7 +40834,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -40829,7 +40845,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1805029960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805029951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0f8447ce229074b80e300c53fd2c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleJump: 1
+  dash: 0
 --- !u!1 &1807479073
 GameObject:
   m_ObjectHideFlags: 0
