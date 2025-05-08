@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Tiger : MonoBehaviour
@@ -29,7 +28,7 @@ public class Tiger : MonoBehaviour
         else sr.flipX = false;
 
         // don't let him fall off that platform!!!
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13.8f, 14.2f), transform.position.y, transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13.8f, 14.2f), Mathf.Max(2.99f, transform.position.y), transform.position.z);
 
         if (!(lunging || charging))
         {
@@ -53,7 +52,11 @@ public class Tiger : MonoBehaviour
             rb.linearVelocity = new Vector2(chargeSpeed * chargeDir, 0);
 
             actionTimer -= Time.deltaTime;
-            if (actionTimer < 0) charging = false;
+            if (actionTimer < 0)
+            {
+                charging = false;
+                anim.Play("Tiger_Walk");
+            }
 
             // face the right direction
             if (rb.linearVelocityX > 0) sr.flipX = true;
@@ -94,5 +97,12 @@ public class Tiger : MonoBehaviour
         chargeDir = Mathf.Sign(FindPlayer().transform.position.x - transform.position.x);
         charging = true;
         actionTimer = Random.Range(1f, 4f);
+
+        anim.Play("Tiger_Charge");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<Death>().KillPlayer("TIGER GOT YOU");
     }
 }
