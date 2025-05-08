@@ -1,20 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bossbar : MonoBehaviour
 {
-    public float fullWidth;
+    public GameObject boss;
 
-    private GameObject boss;
     private Enemy enemy;
+    private Slider slider;
 
     void Start()
     {
         enemy = boss.GetComponent<Enemy>();
+        slider = GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = new Vector3(fullWidth * (enemy.health / enemy.maxHealth), transform.localScale.y);
+        slider.value = (enemy.health / enemy.maxHealth);
     }
 }

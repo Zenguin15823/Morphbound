@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Tiger : MonoBehaviour
@@ -100,5 +99,10 @@ public class Tiger : MonoBehaviour
         actionTimer = Random.Range(1f, 4f);
 
         anim.Play("Tiger_Charge");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<Death>().KillPlayer("TIGER GOT YOU");
     }
 }
